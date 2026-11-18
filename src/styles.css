@@ -1003,6 +1003,6 @@ html.fv-open, html.fv-open body { overflow: hidden; }
 html.td-active, html.td-active body { overflow: hidden; overscroll-behavior: none; }
 .nb-tree .side-link.dragging { opacity: .45; }
 /* Realce: o texto fica sempre escuro sobre a cor (legível também no modo escuro) */
-.prose mark { color: #1c1c1c; border-radius: 3px; padding: 0 2px; }
+.prose mark { color: #1c1c1c !important; border-radius: 3px; padding: 0 2px; }
 /* Telemóvel: a barra da legenda da imagem não sai do ecrã */
 @media (max-width: 820px) { .img-capbar { flex-wrap: wrap; } .img-caption { min-width: 0; flex-basis: 100%; } }
