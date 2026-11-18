@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-PT">
+<head><meta charset="utf-8"><title>FlyNotes Web Clipper</title><link rel="stylesheet" href="popup.css"></head>
+<body>
+  <header><img src="icons/icon-48.png" alt="" width="26" height="26"><strong>FlyNotes</strong><span class="grow"></span><button id="gear" class="icon" title="Ligação à FlyNotes" aria-label="Ligação à FlyNotes">⚙</button></header>
+
+  <section id="setup" hidden>
+    <h1>Ligar à sua FlyNotes</h1>
+    <p>Na FlyNotes, abra <b>Definições → Web Clipper</b>, carregue em <b>Gerar código de ligação</b> e cole-o aqui.</p>
+    <label for="code">Código de ligação</label>
+    <textarea id="code" rows="3" placeholder="https://…#fnc_…" spellcheck="false"></textarea>
+    <p id="setup-err" class="err" role="alert" hidden></p>
+    <div class="row"><button id="connect" class="primary">Ligar</button><button id="cancel-setup" hidden>Cancelar</button><button id="disconnect" class="danger" hidden>Desligar este navegador</button></div>
+  </section>
+
+  <section id="clip" hidden>
+    <label for="title">Título</label>
+    <input id="title" type="text">
+    <fieldset>
+      <legend>O que guardar</legend>
+      <div class="modes" role="radiogroup">
+        <label><input type="radio" name="mode" value="article"><span>Artigo</span></label>
+        <label><input type="radio" name="mode" value="full"><span>Página</span></label>
+        <label><input type="radio" name="mode" value="selection"><span>Seleção</span></label>
+        <label><input type="radio" name="mode" value="bookmark"><span>Marcador</span></label>
+        <label><input type="radio" name="mode" value="screenshot"><span>Captura</span></label>
+      </div>
+      <p id="mode-hint" class="hint"></p>
+    </fieldset>
+    <label for="notebook">Caderno</label>
+    <select id="notebook"></select>
+    <label for="tags">Etiquetas <small>(separadas por vírgulas)</small></label>
+    <input id="tags" type="text" list="taglist" placeholder="ex.: fornecedores, ideias" autocomplete="off">
+    <datalist id="taglist"></datalist>
+    <label for="comment">Comentário <small>(opcional)</small></label>
+    <textarea id="comment" rows="2"></textarea>
+    <p id="clip-err" class="err" role="alert" hidden></p>
+    <button id="save" class="primary block">Guardar na FlyNotes</button>
+  </section>
+
+  <section id="done" hidden>
+    <div class="ok">✓</div>
+    <h1>Guardado</h1>
+    <p id="done-title"></p>
+    <div class="row center"><a id="open" class="btn primary" target="_blank" rel="noopener">Abrir na FlyNotes</a><button id="close">Fechar</button></div>
+  </section>
+
+  <section id="loading"><p class="hint">A preparar…</p></section>
+  <script src="popup.js"></script>
+</body>
+</html>

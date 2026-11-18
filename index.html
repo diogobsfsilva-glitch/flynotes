@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+    <meta name="theme-color" content="#1a1a1a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="FlyNotes" />
+    <meta name="description" content="FlyNotes — notas, tarefas e documentos em todo o lado." />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icon.svg?v=3" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+    <title>FlyNotes</title>
+    <script>
+      try {
+        var t = JSON.parse(localStorage.getItem('fn:theme') || '"system"');
+        if (t !== 'system') document.documentElement.dataset.theme = t;
+        document.documentElement.dataset.accent = JSON.parse(localStorage.getItem('fn:accent') || '"evernote"');
+        var f = JSON.parse(localStorage.getItem('fn:fontSize') || '16');
+        document.documentElement.style.setProperty('--editor-font', f + 'px');
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
