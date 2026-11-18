@@ -107,6 +107,12 @@ Para desenvolver: `npm run dev` (recarrega ao editar) e `npm run typecheck`.
 - Escolha uma password forte e nunca partilhe o ficheiro `.env` nem as variáveis da Vercel.
 - As notas encriptadas usam AES-256; se esquecer a frase-passe, o conteúdo não pode ser recuperado.
 
+## Apoiar o projeto
+
+A FlyNotes é gratuita e vai continuar a ser. Se lhe for útil e quiser ajudar a manter o desenvolvimento, pode contribuir com o valor que entender — é totalmente opcional.
+
+[![Apoiar no Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/dfs78035)
+
 ## Licença e avisos
 
 Distribuída sob a [licença MIT](LICENSE): pode usar, alterar e redistribuir livremente, sem garantias.
@@ -147,6 +153,12 @@ A FlyNotes é um projeto independente. **Não tem qualquer ligação à Evernote
 **B. On your computer** — install [Node.js](https://nodejs.org) (LTS), download this repository (**Code → Download ZIP**), extract it and double-click `iniciar.bat` (Windows) or `iniciar.command` (Mac). The first start prints a password generated for you. From a terminal: `npm install && npm start`.
 
 The interface and the [step-by-step guide](docs/INSTALAR.md) are in Portuguese (Portugal); browser translation handles the guide well.
+
+### Support the project
+
+FlyNotes is free and will stay free. If you find it useful and would like to help keep development going, you can contribute any amount you like — entirely optional.
+
+[![Support on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/dfs78035)
 
 ### Good to know
 

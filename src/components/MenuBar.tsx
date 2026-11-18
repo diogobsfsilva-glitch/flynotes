@@ -12,6 +12,9 @@ import { Icon, askText, toast, showModal, Modal, type MenuItem } from '../ui';
 import { pickTemplate } from './pickers';
 import { editTask } from './NoteEditor';
 
+// Página de apoio ao projeto (contribuições voluntárias)
+export const SUPPORT_URL = 'https://ko-fi.com/dfs78035';
+
 type MenuDef = { id: string; label: string; items: MenuItem[] };
 
 export function MenuBar({ onLogout, onToggleSidebar }: { onLogout: () => void; onToggleSidebar: () => void }) {
@@ -131,10 +134,12 @@ export function MenuBar({ onLogout, onToggleSidebar }: { onLogout: () => void; o
     ] },
     { id: 'help', label: 'Ajuda', items: [
       { label: 'Sintaxe de pesquisa e atalhos', icon: 'search', onClick: () => navigate('settings') },
+      { label: 'Apoiar a FlyNotes (Ko-fi)', icon: 'star', onClick: () => window.open(SUPPORT_URL, '_blank', 'noopener') },
       { label: 'Sobre a FlyNotes', icon: 'info', onClick: () => showModal<void>((done) => (
         <Modal title="FlyNotes" onClose={done}>
           <p>Versão 1.0 — notas, tarefas e documentos, no computador e no telemóvel, com funcionamento offline.</p>
-          <p className="muted">Os dados ficam na sua base de dados privada (Neon) e os anexos no seu armazenamento Vercel.</p>
+          <p className="muted">Os dados ficam na sua base de dados privada e os anexos no seu armazenamento.</p>
+          <p>A FlyNotes é gratuita e de código aberto. Se lhe for útil, pode <a href={SUPPORT_URL} target="_blank" rel="noopener noreferrer">apoiar o desenvolvimento no Ko-fi</a>.</p>
         </Modal>
       )) },
     ] },

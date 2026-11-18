@@ -6,6 +6,7 @@ import { setSetting, alive } from '../lib/store';
 import { importEnex, exportEnex } from '../lib/enex';
 import { download, relDate } from '../lib/util';
 import { syncNow, resetLocalData } from '../lib/sync';
+import { SUPPORT_URL } from './MenuBar';
 import { ACCENTS, SIDEBAR_STYLES, applyAccent, DEFAULT_ACCENT } from '../lib/themes';
 import { Icon, confirmDialog, toast } from '../ui';
 import { syncTitle } from './Sidebar';
@@ -209,9 +210,10 @@ export function SettingsView({ onLogout }: { onLogout: () => void }) {
 
       <section className="settings-card">
         <h3><Icon name="logout" size={16} /> Conta</h3>
-        <p className="muted">A FlyNotes é de utilizador único. A password é definida na variável <code>FLYNOTES_PASSWORD</code> do projeto na Vercel.</p>
+        <p className="muted">A FlyNotes é de utilizador único. Pode alterar a password na secção <b>Password</b>, acima.</p>
         <button className="btn danger" onClick={onLogout}><Icon name="logout" size={15} /> Terminar sessão</button>
       </section>
+      <p className="muted center small">A FlyNotes é gratuita e de código aberto. <a href={SUPPORT_URL} target="_blank" rel="noopener noreferrer">Apoiar o desenvolvimento</a></p>
       <p className="muted center small">FlyNotes 1.0 · {lastSync?.value ? 'última sincronização ' + relDate(lastSync.value) : ''}</p>
     </div>
   );
