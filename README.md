@@ -1,8 +1,10 @@
 # FlyNotes
 
+**[English](#english)** · **[Português](#o-que-faz)**
+
 **As suas notas, tarefas e documentos em todo o lado — no computador e no telemóvel, mesmo sem internet.**
 
-A FlyNotes é uma aplicação de notas pessoal, de código aberto, para uma só pessoa. Instala-se num servidor seu (gratuito) e os dados ficam consigo: não há contas de terceiros, publicidade nem subscrições.
+A FlyNotes é uma aplicação de notas pessoal, de código aberto e **totalmente gratuita**, inspirada no Evernote e pensada para uma só pessoa. Instala-se num servidor seu (também gratuito) e os dados ficam consigo: não há subscrições, versões pagas, publicidade nem contas de terceiros.
 
 ![FlyNotes no computador](docs/screenshots/pc-nota.png)
 
@@ -113,4 +115,42 @@ A FlyNotes é um projeto independente. **Não tem qualquer ligação à Evernote
 
 ---
 
-**English:** FlyNotes is an open-source, single-user, local-first notes app (notes, tasks, calendar, attachments, offline sync, web clipper, ENEX import). The interface and documentation are in Portuguese. To install, use the Vercel button above (free tiers of Vercel + Neon), or run `npm install && npm start` locally with Node.js 22+.
+## English
+
+**FlyNotes is a free, open-source personal note-taking app inspired by Evernote.** It runs on your computer and your phone, works offline, and keeps your data in an account that belongs to you.
+
+**It costs nothing.** There is no subscription, no paid tier, no ads and no tracking. You host your own copy, and the free plans of Vercel (hosting) and Neon (database) are more than enough for personal use — or you can run it entirely on your own computer.
+
+### What it does
+
+- **Rich notes** — headings, lists, checklists, tables, highlights, colours, code blocks, links between notes, dates and 70+ ready-made templates.
+- **Attachments inside the note** — images, PDFs, video, voice recordings and files, all resizable. Text inside PDFs and scanned images becomes searchable.
+- **Organisation** — notebooks grouped into stacks, tags, shortcuts, pinned notes, drag and drop (on phones too).
+- **Search** — instant, accent-insensitive, with Evernote-style operators such as `tag:`, `notebook:`, `intitle:`, `todo:` and `created:`.
+- **Tasks, reminders and calendar** — due dates, priorities, recurrence, push notifications, and read-only Google / Outlook / iCloud calendar feeds.
+- **Offline first** — write without a connection and sync later; conflicting edits are kept as a separate copy, never lost.
+- **Web Clipper** — a Chrome and Edge extension that saves articles, full pages, selections, bookmarks and screenshots.
+- **Evernote import** — `.enex` files with attachments, tags and dates. Exports to ENEX, Markdown, HTML and PDF.
+- **Security** — password, Face ID / fingerprint (passkeys), per-note encryption, daily backups with restore.
+- **Look and feel** — light and dark mode, 13 accent colours, 4 sidebar styles.
+
+### Install
+
+| | A. In the cloud (recommended) | B. On your computer only |
+|---|---|---|
+| Works on your phone | Yes, anywhere | Only on the same Wi-Fi, not installable as an app |
+| Cost | Free | Free |
+| You need | A GitHub and a Vercel account | Node.js 22 or later |
+
+**A. In the cloud** — click the **Instalar na Vercel** button in the [Instalar](#instalar) section above. Accept the Neon database and the private Blob store (both on the free plan), set `FLYNOTES_PASSWORD` (the password you will sign in with) and `SESSION_SECRET` (any long random text), then press **Deploy**. Open your new address on your phone and choose *Add to Home Screen* (Safari on iPhone, Chrome on Android).
+
+**B. On your computer** — install [Node.js](https://nodejs.org) (LTS), download this repository (**Code → Download ZIP**), extract it and double-click `iniciar.bat` (Windows) or `iniciar.command` (Mac). The first start prints a password generated for you. From a terminal: `npm install && npm start`.
+
+The interface and the [step-by-step guide](docs/INSTALAR.md) are in Portuguese (Portugal); browser translation handles the guide well.
+
+### Good to know
+
+- **One user per installation.** Everyone runs their own copy; there is no sharing or team features.
+- **Your data stays yours** — it lives in your own database and storage, and nobody else can read it.
+- **Licence:** [MIT](LICENSE) — use, modify and redistribute freely, with no warranty.
+- **Not affiliated with Evernote.** FlyNotes is an independent project. "Evernote" is a trademark of its owner and is mentioned only to describe where the idea came from and the `.enex` import format.
