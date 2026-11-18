@@ -1,0 +1,24 @@
+{
+  "name": "flynotes-desktop",
+  "productName": "FlyNotes",
+  "version": "1.0.0",
+  "description": "FlyNotes — notas, tarefas e documentos no seu computador.",
+  "author": "Autores do FlyNotes",
+  "license": "MIT",
+  "private": true,
+  "main": "build/main.cjs",
+  "scripts": {
+    "bundle": "node scripts/bundle.mjs",
+    "start": "npm run bundle && electron .",
+    "pack": "npm run bundle && electron-builder --dir",
+    "dist": "npm run bundle && electron-builder"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.14"
+  },
+  "devDependencies": {
+    "electron": "^45.3.4",
+    "electron-builder": "^26.18.0",
+    "esbuild": "^0.28.2"
+  }
+}

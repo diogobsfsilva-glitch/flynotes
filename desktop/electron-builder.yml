@@ -1,0 +1,56 @@
+appId: io.github.flynotes.desktop
+productName: FlyNotes
+executableName: FlyNotes
+copyright: Copyright (c) 2026 Autores do FlyNotes
+directories:
+  output: release
+  buildResources: resources
+files:
+  - build/**
+  - web/**
+  - resources/icon.png
+  - package.json
+asarUnpack:
+  - node_modules/@electric-sql/pglite/**
+artifactName: FlyNotes-${version}-${os}-${arch}.${ext}
+publish:
+  provider: github
+  owner: diogobsfsilva-glitch
+  repo: flynotes
+  releaseType: release
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: resources/icon.png
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: FlyNotes
+  deleteAppDataOnUninstall: false
+  artifactName: FlyNotes-Setup.${ext}
+mac:
+  target:
+    - target: dmg
+      arch: [arm64, x64]
+  category: public.app-category.productivity
+  icon: resources/icon.png
+  # Sem certificado da Apple: assinatura «ad-hoc» (evita o aviso «aplicação danificada» nos Mac com chip Apple)
+  identity: "-"
+  hardenedRuntime: false
+  extendInfo:
+    NSMicrophoneUsageDescription: A FlyNotes usa o microfone para gravações de voz e ditado nas notas.
+    NSCameraUsageDescription: A FlyNotes usa a câmara para fotografar e digitalizar documentos.
+dmg:
+  artifactName: FlyNotes-Mac-${arch}.${ext}
+linux:
+  executableName: flynotes
+  target:
+    - target: AppImage
+      arch: [x64]
+  category: Office
+  icon: resources/icon.png
+  artifactName: FlyNotes-Linux.${ext}

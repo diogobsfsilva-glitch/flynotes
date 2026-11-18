@@ -47,16 +47,32 @@ A FlyNotes é uma aplicação de notas pessoal, de código aberto e **totalmente
 
 ## Instalar
 
-Há duas formas. **Se quer usar no telemóvel, escolha a opção A.**
+Há três formas, todas gratuitas.
 
-| | A. Na nuvem (recomendado) | B. Só no computador |
-|---|---|---|
-| Funciona no telemóvel | Sim, em qualquer lugar | Só na mesma rede Wi-Fi, e sem instalar como app |
-| Custo | Gratuito (planos gratuitos da Vercel e da Neon) | Gratuito |
-| Precisa de | Conta no GitHub e na Vercel | Node.js instalado |
-| Tempo | ~10 minutos | ~5 minutos |
+| | 1. Instalador (o mais simples) | 2. Na nuvem | 3. Manual |
+|---|---|---|---|
+| Para quem | Quem quer usar no computador | Quem quer usar no computador **e** no telemóvel | Quem programa |
+| Telemóvel | Só na mesma rede Wi-Fi, com o computador ligado | Sim, em qualquer lugar, como app | Só na mesma rede Wi-Fi |
+| Precisa de | Nada | Conta no GitHub e na Vercel | Node.js |
+| Tempo | ~2 minutos | ~10 minutos | ~5 minutos |
 
-### Opção A — Na nuvem, com um clique
+### 1. Instalador para Windows e Mac
+
+| Sistema | Descarregar |
+|---|---|
+| **Windows** 10 e 11 | [FlyNotes-Setup.exe](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Setup.exe) |
+| **Mac** com chip Apple (M1, M2, M3, M4…) | [FlyNotes-Mac-arm64.dmg](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Mac-arm64.dmg) |
+| **Mac** com processador Intel | [FlyNotes-Mac-x64.dmg](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Mac-x64.dmg) |
+| **Linux** | [FlyNotes-Linux.AppImage](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Linux.AppImage) |
+
+Todas as versões estão na página [Releases](https://github.com/diogobsfsilva-glitch/flynotes/releases).
+
+- **Windows:** abra o ficheiro. Se aparecer "O Windows protegeu o seu PC", clique em **Mais informações → Executar mesmo assim**.
+- **Mac:** abra o `.dmg` e arraste a FlyNotes para **Aplicações**. Na primeira vez, o Mac avisa que não consegue verificar a aplicação: vá a **Definições do Sistema → Privacidade e segurança**, desça até à FlyNotes e clique em **Abrir mesmo assim**.
+
+Os avisos aparecem porque a FlyNotes é gratuita e não tem um certificado pago da Microsoft ou da Apple. A aplicação abre já com sessão iniciada e guarda as notas no próprio computador.
+
+### 2. Na nuvem, com um clique
 
 [![Instalar na Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdiogobsfsilva-glitch%2Fflynotes&project-name=flynotes&repository-name=flynotes&env=FLYNOTES_PASSWORD%2CSESSION_SECRET&envDescription=FLYNOTES_PASSWORD%3A%20a%20password%20para%20entrar%20na%20aplica%C3%A7%C3%A3o.%20SESSION_SECRET%3A%20um%20texto%20aleat%C3%B3rio%20longo%20%2840%20ou%20mais%20caracteres%29.&envLink=https%3A%2F%2Fgithub.com%2Fdiogobsfsilva-glitch%2Fflynotes%2Fblob%2Fmain%2Fdocs%2FINSTALAR.md&stores=%5B%7B%22type%22%3A%22integration%22%2C%22integrationSlug%22%3A%22neon%22%2C%22productSlug%22%3A%22neon%22%2C%22protocol%22%3A%22storage%22%7D%2C%7B%22type%22%3A%22blob%22%2C%22access%22%3A%22private%22%7D%5D)
 
@@ -69,7 +85,7 @@ Há duas formas. **Se quer usar no telemóvel, escolha a opção A.**
 
 Depois instale no telemóvel e no computador como se fosse uma app — veja o [guia de instalação](docs/INSTALAR.md), que explica cada passo com mais detalhe, incluindo o iPhone, o Android, o Windows e o Mac.
 
-### Opção B — Só no computador (Windows ou Mac)
+### 3. Manual (com Node.js)
 
 1. Instale o [Node.js](https://nodejs.org) (versão LTS, 22 ou superior).
 2. Descarregue este repositório: botão verde **Code → Download ZIP**, e extraia para uma pasta.
@@ -142,15 +158,16 @@ A FlyNotes é um projeto independente. **Não tem qualquer ligação à Evernote
 
 ### Install
 
-| | A. In the cloud (recommended) | B. On your computer only |
-|---|---|---|
-| Works on your phone | Yes, anywhere | Only on the same Wi-Fi, not installable as an app |
-| Cost | Free | Free |
-| You need | A GitHub and a Vercel account | Node.js 22 or later |
+| | 1. Installer (simplest) | 2. In the cloud | 3. Manual |
+|---|---|---|---|
+| Works on your phone | Same Wi-Fi only, computer on | Yes, anywhere, as an app | Same Wi-Fi only |
+| You need | Nothing | A GitHub and a Vercel account | Node.js 22+ |
 
-**A. In the cloud** — click the **Instalar na Vercel** button in the [Instalar](#instalar) section above. Accept the Neon database and the private Blob store (both on the free plan), set `FLYNOTES_PASSWORD` (the password you will sign in with) and `SESSION_SECRET` (any long random text), then press **Deploy**. Open your new address on your phone and choose *Add to Home Screen* (Safari on iPhone, Chrome on Android).
+**1. Installer** — download for [Windows](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Setup.exe), [Mac with Apple chip](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Mac-arm64.dmg), [Mac with Intel](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Mac-x64.dmg) or [Linux](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Linux.AppImage). The installers are not code-signed, so Windows shows "Windows protected your PC" (click *More info → Run anyway*) and macOS asks you to allow the app in *System Settings → Privacy & Security → Open Anyway*.
 
-**B. On your computer** — install [Node.js](https://nodejs.org) (LTS), download this repository (**Code → Download ZIP**), extract it and double-click `iniciar.bat` (Windows) or `iniciar.command` (Mac). The first start prints a password generated for you. From a terminal: `npm install && npm start`.
+**2. In the cloud** — click the **Instalar na Vercel** button in the [Instalar](#instalar) section above. Accept the Neon database and the private Blob store (both on the free plan), set `FLYNOTES_PASSWORD` (the password you will sign in with) and `SESSION_SECRET` (any long random text), then press **Deploy**. Open your new address on your phone and choose *Add to Home Screen* (Safari on iPhone, Chrome on Android).
+
+**3. Manual** — install [Node.js](https://nodejs.org) (LTS), download this repository (**Code → Download ZIP**), extract it and double-click `iniciar.bat` (Windows) or `iniciar.command` (Mac). The first start prints a password generated for you. From a terminal: `npm install && npm start`.
 
 The interface and the [step-by-step guide](docs/INSTALAR.md) are in Portuguese (Portugal); browser translation handles the guide well.
 

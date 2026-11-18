@@ -1,0 +1,77 @@
+# Constrói os instaladores da FlyNotes para Windows, Mac e Linux e publica-os na página Releases.
+# Corre ao criar uma etiqueta de versão (ex.: v1.0.1) ou manualmente em Actions → Instaladores → Run workflow.
+name: Instaladores
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Versão a publicar (ex.: 1.0.1)'
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: desktop-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Preparar a versão
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+    steps:
+      - id: v
+        shell: bash
+        run: |
+          V="${{ github.event.inputs.version }}"
+          [ -z "$V" ] && V="${GITHUB_REF_NAME#v}"
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+      - name: Criar a versão na página Releases (se ainda não existir)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          V="${{ steps.v.outputs.version }}"
+          gh release view "v$V" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
+            gh release create "v$V" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "FlyNotes $V" \
+              --notes "Instaladores da FlyNotes $V. Veja como instalar em docs/INSTALAR.md."
+
+  build:
+    name: Instalador ${{ matrix.name }}
+    needs: release
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: windows-latest, name: Windows, args: --win }
+          - { os: macos-latest, name: Mac, args: --mac }
+          - { os: ubuntu-latest, name: Linux, args: --linux }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            desktop/package-lock.json
+      - name: Construir a aplicação web
+        run: |
+          npm ci
+          npm run build
+      - name: Construir o instalador
+        working-directory: desktop
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+        run: |
+          npm ci
+          npm version "${{ needs.release.outputs.version }}" --no-git-tag-version --allow-same-version
+          npm run bundle
+          npx electron-builder ${{ matrix.args }} --publish always

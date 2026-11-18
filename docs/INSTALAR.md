@@ -23,7 +23,7 @@ Este guia explica, passo a passo, como ter a sua própria FlyNotes a funcionar e
 A FlyNotes é para **uma pessoa**: cada utilizador cria a sua própria instalação, com os seus dados.
 
 - **Opção A — Na nuvem.** A aplicação fica num endereço na internet só seu. Funciona no computador e no telemóvel, em qualquer lugar, e pode ser instalada como app. É gratuita dentro dos planos gratuitos da Vercel (alojamento) e da Neon (base de dados), que chegam largamente para uso pessoal. **É a opção recomendada.**
-- **Opção B — Só no computador.** A aplicação corre no seu PC ou Mac e os dados ficam numa pasta desse computador. Serve para experimentar ou para quem não quer nada na internet. O telemóvel só consegue aceder quando está na mesma rede Wi-Fi e o computador está ligado, e sem as funções de app (instalação, offline, notificações).
+- **Opção B — Só no computador.** Descarrega um instalador para Windows ou Mac e a FlyNotes funciona como qualquer outro programa, com os dados guardados nesse computador. É a forma mais rápida de começar, e serve para quem não quer nada na internet. O telemóvel só consegue aceder quando está na mesma rede Wi-Fi e o computador está ligado, e sem as funções de app (instalação, offline, notificações).
 
 Pode começar pela opção B e passar mais tarde para a A: exporte as notas (menu **Ficheiro → Exportar todas as notas (.enex)**) e importe-as na nova instalação.
 
@@ -60,10 +60,60 @@ Pode começar pela opção B e passar mais tarde para a A: exporte as notas (men
 
 ## 3. Opção B — Só no computador
 
-### O que precisa
-- [Node.js](https://nodejs.org) versão 22 ou superior. No site, descarregue a versão **LTS** e instale com as opções predefinidas.
+### Com o instalador (recomendado)
 
-### Windows
+Não precisa de instalar mais nada.
+
+| Sistema | Descarregar |
+|---|---|
+| **Windows** 10 e 11 | [FlyNotes-Setup.exe](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Setup.exe) |
+| **Mac** com chip Apple (M1, M2, M3, M4…) | [FlyNotes-Mac-arm64.dmg](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Mac-arm64.dmg) |
+| **Mac** com processador Intel | [FlyNotes-Mac-x64.dmg](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Mac-x64.dmg) |
+| **Linux** | [FlyNotes-Linux.AppImage](https://github.com/diogobsfsilva-glitch/flynotes/releases/latest/download/FlyNotes-Linux.AppImage) |
+
+Não sabe qual é o seu Mac? Menu  → **Acerca deste Mac**: se aparecer "Chip Apple M…", escolha o primeiro; se aparecer "Processador Intel", o segundo.
+
+**Windows**
+
+1. Abra o ficheiro `FlyNotes-Setup.exe` que descarregou.
+2. Se aparecer **"O Windows protegeu o seu PC"**, clique em **Mais informações** → **Executar mesmo assim**.
+3. A instalação demora alguns segundos e cria um atalho no ambiente de trabalho e no menu Iniciar.
+
+**Mac**
+
+1. Abra o ficheiro `.dmg` e arraste a **FlyNotes** para a pasta **Aplicações**.
+2. Abra a FlyNotes a partir das Aplicações. Na primeira vez o Mac diz que não consegue verificar a aplicação: clique em **OK** (ou **Concluído**).
+3. Vá a **Definições do Sistema → Privacidade e segurança**, desça até ao fim e clique em **Abrir mesmo assim** junto à FlyNotes. Confirme com a sua password do Mac.
+4. Se o Mac disser que a aplicação **"está danificada"**, abra a app **Terminal**, escreva o comando abaixo e carregue em Enter. Depois abra a FlyNotes de novo.
+
+   ```bash
+   xattr -cr /Applications/FlyNotes.app
+   ```
+
+Os avisos do Windows e do Mac aparecem porque a FlyNotes é gratuita e não tem um certificado pago da Microsoft ou da Apple. Não significam que haja um problema.
+
+**No dia a dia**
+
+- A FlyNotes abre já com sessão iniciada; não precisa de password no computador.
+- Na primeira vez mostra a **password criada para si**, que só é precisa para entrar a partir do telemóvel. Pode mudá-la em **Definições → Password**.
+- **As notas ficam no computador.** Para ver a pasta: menu **Ajuda → Abrir a pasta dos dados**. Inclua-a nas suas cópias de segurança.
+- Quando houver uma versão nova, a FlyNotes avisa. Também pode verificar em **Ajuda → Procurar atualizações**. Para atualizar, descarregue e instale por cima; as notas mantêm-se.
+
+**Usar no telemóvel (na mesma rede Wi-Fi)**
+
+1. No computador, menu **Telemóvel → Permitir acesso a partir do telemóvel**. A FlyNotes reinicia.
+2. Menu **Telemóvel → Como ligar o telemóvel** mostra o endereço (por exemplo `http://192.168.1.20:47615`) e a password.
+3. No telemóvel, ligado ao mesmo Wi-Fi, abra esse endereço no navegador e entre com a password.
+
+O computador tem de estar ligado com a FlyNotes aberta. Se o Windows perguntar se permite o acesso à rede, escolha **Redes privadas**. Para usar o telemóvel em qualquer lugar, escolha a opção A.
+
+### Sem instalador (com Node.js)
+
+Para quem prefere correr diretamente o código.
+
+- Instale o [Node.js](https://nodejs.org) versão 22 ou superior. No site, descarregue a versão **LTS** e instale com as opções predefinidas.
+
+**Windows**
 
 1. Nesta página do GitHub, clique no botão verde **Code** → **Download ZIP**.
 2. Na pasta **Transferências**, clique com o botão direito no ficheiro → **Extrair tudo**.
@@ -73,14 +123,14 @@ Pode começar pela opção B e passar mais tarde para a A: exporte as notas (men
 5. Abre-se uma janela preta. Na primeira vez a instalação demora alguns minutos. Quando terminar, o navegador abre em `http://localhost:5173`.
 6. A janela preta mostra a linha **"Foi criada uma password para si"**. Use-a para entrar.
 
-### Mac
+**Mac**
 
 1. Descarregue o ZIP como acima e faça duplo clique para extrair. Mova a pasta para **Documentos**.
 2. Faça duplo clique em **`iniciar.command`**.
    - Se o macOS disser que o ficheiro não pode ser aberto: clique com o botão direito → **Abrir** → **Abrir**. Se continuar a recusar, abra a app **Terminal**, escreva `chmod +x ` (com o espaço), arraste o ficheiro para a janela e carregue em Enter; depois repita o duplo clique.
 3. O resto é igual ao Windows.
 
-### Usar no dia a dia
+**Usar no dia a dia (sem instalador)**
 
 - A FlyNotes só funciona enquanto essa janela estiver aberta. Para a voltar a usar, faça de novo duplo clique no ficheiro `iniciar`.
 - A password está no ficheiro `.env` dentro da pasta (é um ficheiro oculto). Pode mudá-la na aplicação, em **Definições → Password**.
