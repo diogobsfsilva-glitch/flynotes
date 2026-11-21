@@ -6,7 +6,7 @@ import { useActiveNotes, useNotebooks, useTags, useSettings } from '../hooks';
 import { navigate, href, openNote } from '../lib/router';
 import { relDate, debounce, dateTimeShort } from '../lib/util';
 import { flatText } from '../lib/search';
-import { Icon, Menu } from '../ui';
+import { Icon, Menu, askText } from '../ui';
 import { TaskRow, editTask } from './NoteEditor';
 import { pickTemplate, sanitizePreview } from './pickers';
 
@@ -21,6 +21,11 @@ export function Home() {
   const widgets = { recent: true, scratch: true, tasks: true, pinned: true, shortcuts: true, reminders: true, tags: true, notebooks: true, ...(settings.homeWidgets || {}) };
   const hour = new Date().getHours();
   const greeting = hour < 12 ? 'Bom dia' : hour < 20 ? 'Boa tarde' : 'Boa noite';
+  const firstName = (settings.userName || '').trim().split(/\s+/)[0];
+  const askName = async () => {
+    const v = await askText('Como se chama?', { initial: settings.userName || '', placeholder: 'Ex.: Maria', ok: 'Guardar', label: 'O nome aparece na saudação e na barra lateral.' });
+    if (v !== null) await setSetting('userName', v.trim());
+  };
   const today = new Date().toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' });
 
   const quick = async (kind: string) => {
@@ -34,7 +39,8 @@ export function Home() {
     <div className="home">
       <header className="home-head">
         <div>
-          <h1>{greeting}!</h1>
+          <h1>{greeting}{firstName ? `, ${firstName}` : ''}!</h1>
+          {!firstName && <button className="link-btn muted small" onClick={askName}>Como se chama?</button>}
           <p className="muted cap">{today}</p>
         </div>
         <span className="flex-1" />
